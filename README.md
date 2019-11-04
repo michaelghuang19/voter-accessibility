@@ -45,7 +45,7 @@ We will take a look at voter participation rates for various years such as midte
 
 <h3>Possible Data Sets</h3>
 
-Washington State Election County Registration Counts
+Washington State Election County Registration Counts  
 https://www.sos.wa.gov/elections/research/county-registration-counts.aspx  
 
 This is one example of a data set that is useful for counting the number of registered and unregistered voters by county, which could provide some geographical hints to possible trends in voter participation. This specific data set also has more statistics for participation based on various demographic traits.
