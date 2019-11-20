@@ -13,7 +13,7 @@ install.packages("leaflet")
 
 setwd("/Users/kevinmendez/desktop/INFO201/voter-accessibility")
 #Load data
-natl_vote_reg <- read.csv("/Users/kevinmendez/desktop/INFO201/voter-accessibility/data/national_voter_registration.csv",stringsAsFactors = FALSE)
+natl_vote_reg <- read.csv("data/national_voter_registration.csv",stringsAsFactors = FALSE)
 natl_vote_reg
 wa_age_vote_reg <- read.csv("data/wa_reg_voters_by_age.csv", stringsAsFactors = FALSE)
 wa_age_vote_reg
