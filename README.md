@@ -1,4 +1,7 @@
-https://github.com/michaelghuang19/voter-accessibility/wiki
+
+<b>Wiki:</b> https://github.com/michaelghuang19/voter-accessibility/wiki
+
+<b>Shiny App:</b>
 
 <h3>Problem situation</h3>
 
