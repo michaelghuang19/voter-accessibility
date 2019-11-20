@@ -1,29 +1,5 @@
 https://github.com/michaelghuang19/voter-accessibility/wiki
 
-# Voter Accessibility in Washington State
-
-<h3>Project Code Name:</h3>
-
-VoterAccessWA
-
-<h3>Working Title:</h3>
-
-Voter Accessibility in Washington State: Improving Ease and Awareness of Voting for the Less Politically Active
-
-<h3>Team Members</h3>
-
-- Anush Mughnetsyan
-- Kevin Mendez
-- Michael Huang
-- Zufan Mitiku
-
-<h3>Affiliation</h3>
-
-Info-201: Technical Foundations of Informatics  
-The Information School  
-University of Washington  
-Autumn 2019
-
 <h3>Problem situation</h3>
 
 The issue we plan on investigating is the lack of participation in elections, and specifically compare voter turnout in midterm and presidential elections. We believe that everyone living in the states such as taxpayers are stakeholders in voter participation because whoever is elected will play a large role in laws and policies that may or may not be passed that can affect our daily lives. In addition, people that are apart of marginalized communities are heavily impacted because when these groups are underrepresented or don’t exercise their right to vote, people who are elected into office generally don’t have diverse opinions or backgrounds.
