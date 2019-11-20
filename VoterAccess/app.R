@@ -6,14 +6,23 @@
 #
 #    http://shiny.rstudio.com/
 #
+#Load packages
+library("shiny")
+library("dplyr")
+install.packages("leaflet")
 
-library(shiny)
+setwd("/Users/kevinmendez/desktop/INFO201/voter-accessibility")
+#Load data
+natl_vote_reg <- read.csv("/Users/kevinmendez/desktop/INFO201/voter-accessibility/data/national_voter_registration.csv",stringsAsFactors = FALSE)
+natl_vote_reg
+wa_age_vote_reg <- read.csv("data/wa_reg_voters_by_age.csv", stringsAsFactors = FALSE)
+wa_age_vote_reg
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
    
    # Application title
-   titlePanel("Old Faithful Geyser Data"),
+   titlePanel("Voter Registration in Washington State"),
    
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
