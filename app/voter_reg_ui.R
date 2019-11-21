@@ -6,28 +6,43 @@ library(shiny)
 ui <- navbarPage("US Voter Registration",
   fluid=TRUE,
   
-  tabPanel("Overview"),
-  tabPanel("Methods & Data"),
-  tabPanel("Results",
-           sidebarLayout(
-             sidebarPanel(
-               selectInput("County", "County Registered Voters:",
-                           choices = colnames(WACountyReg))
-             ),
+  tabPanel("Overview", 
+           htmlOutput("overviewDescription")),
+  
+  tabPanel("Methods & Data",
+           htmlOutput("dataDescription"),
+           htmlOutput("methodDescription")),
+  
+  navbarMenu("Results",
+             # National-Level Analysis
+             tabPanel("National Data",
+                      htmlOutput("nationalDescription")),
              
-             # Results are displayed here
-             tabsetPanel(
-               tabPanel("National Data",
-                        htmlOutput("nationalDescription")),
-               tabPanel("Washington Data",
-                        plotOutput("voterPlot"),
-                        htmlOutput("waDescription"))
-             )
+             # Washington State Analysis
+             tabPanel("Washington State Data",
+                      sidebarLayout(
+                        sidebarPanel(
+                          selectInput("County", 
+                                      label=h3("Select County"),
+                                      choices = colnames(WACountyReg),
+                                      selected = "TOTAL")
+                        ),
+                        
+                        # Results are displayed here
+                        # TODO: Fix the issue with spacing that occurs here
+                        tabPanel("Washington Data",
+                                 plotOutput("voterPlot"),
+                                 htmlOutput("waDescription"))
+                        
+                      )
              
            )
           ),
   
-  tabPanel("Conclusions"),
-  tabPanel("Other Info")
+  tabPanel("Conclusions",
+           htmlOutput("conclusionDescription")),
+  
+  tabPanel("Other Info",
+           htmlOutput("otherDescription"))
   
 )
