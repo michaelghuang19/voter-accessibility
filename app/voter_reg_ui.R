@@ -1,27 +1,33 @@
+source("voter_data.r", local = TRUE)
+
 library(shiny)
 
-# Define UI for application that draws a histogram
-ui <- fluidPage(
+# Defined UI for the application. Top-page style
+ui <- navbarPage("US Voter Registration",
+  fluid=TRUE,
   
-  # Application title
-  titlePanel("Voter Registration in Washington State"),
+  tabPanel("Overview"),
+  tabPanel("Methods & Data"),
+  tabPanel("Results",
+           sidebarLayout(
+             sidebarPanel(
+               selectInput("County", "County Registered Voters:",
+                           choices = colnames(WACountyReg))
+             ),
+             
+             # Results are displayed here
+             tabsetPanel(
+               tabPanel("National Data",
+                        htmlOutput("nationalDescription")),
+               tabPanel("Washington Data",
+                        plotOutput("voterPlot"),
+                        htmlOutput("waDescription"))
+             )
+             
+           )
+          ),
   
-  # Sidebar with a slider input for number of bins 
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("County", "County Registered Voters:",
-                  choices = colnames(WACounty))
-    ),        
-    
-    # Show a plot of the generated distribution
-    mainPanel(
-      tabsetPanel(
-        tabPanel("Washington Data", plotOutput("voterPlot")),
-        tabPanel("National Data"),
-        tabPanel("Conclusions")
-      )
-    )
-  ),
+  tabPanel("Conclusions"),
+  tabPanel("Other Info")
   
-  tabPanel("National Level Registration")
 )
