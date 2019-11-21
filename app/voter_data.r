@@ -29,4 +29,5 @@ WACountyTotal <- as.data.frame(t(WACountyTotal[,-1]))
 colnames(WACountyTotal) <- m
 WACountyTotal$Age.17.24 <- factor(row.names(WACountyTotal))
 
-
+  
+  

@@ -30,9 +30,14 @@ ui <- navbarPage("US Voter Registration",
                         
                         # Results are displayed here
                         # TODO: Fix the issue with spacing that occurs here
-                        tabPanel("Washington Data",
-                                 plotOutput("voterPlot"),
-                                 htmlOutput("waDescription"))
+                        mainPanel(
+                          tabPanel("Washington Data",
+                                   plotOutput("voterPlot"),
+                                   plotOutput("overlayPlot"),
+                                   htmlOutput("waDescription"))
+                          
+                        )
+                        
                         
                       )
              

@@ -23,6 +23,13 @@ server <- function(input, output) {
     #         xlab = "Age Groups")
   })
   
+  output$overlayPlot <- renderPlot({
+    ggplot(data=WACountyTotal, aes(x=c("17-24", "25-34", "35-44", "45-54",
+                                       "55-64", "65+", "Grand Total"))) +
+      geom_bar(aes(y=WACountyTotal[, input$County]),stat="identity",position ="identity",alpha=.8,fill='lightblue',color='lightblue4') +
+      geom_bar(aes(y=WACountyReg[, input$County]),stat="identity",position ="identity",alpha=.8,fill='pink',color='red') + labs(title = input$County, y = "Reg. Voters & County Pop.", x = "Age Groups")
+  })
+  
   output$overviewDescription <- renderText({
     paste("<h3><B>Overview</B></h3>",
           "<h4>We are interested in voter registration disparities!</h4><br>",
