@@ -5,9 +5,16 @@ library(dplyr)
 
 # Defined server for the application
 server <- function(input, output) {
-  
   # National barplots
-  # output$
+    output$voterPart <- renderPlot({
+      
+      ggplot(natl_voter_reg, aes(x=c("Total Population", "Registered Voters", "Total Voters", "% Registered", "% Voted"),
+                                 y=natl_voter_reg[,input$STATE])) + geom_bar(stat="identity") +
+                                 #geom_bar(aes(y=natl_voter_reg[,input$STATE]),stat = "identity",position ="identity",alpha=.8,fill='lightblue',color='lightblue4') +
+                                 labs(title = input$STATE, y = "People (In Thousands)", x= "National Election Participation")
+                                 #y=natl_voter_reg[,input$STATE])) + geom_bar(stat = "identity") +
+       #labs(title = input$STATE, y = "People (In Thousands)", x= "National Election Participation")
+    })
     
   # Washington barplots
   output$voterPlot <- renderPlot({
@@ -48,8 +55,8 @@ server <- function(input, output) {
           "<h4>Voter registration data is transparent because to have free and open elections,</h4>",
           "<h4>voters and campaigns should have equal access to information to engage all</h4>",
           "<h4>registered voters. The data used in this project were taken from the Washington</h4>",
-          "<h4>Secretary of State's website and the United States Census Bureau. For the purposes of</h4>",
-          "<h4>clarity, data points such as margin of error and percentages were filtered out.</h4> <br>")
+          "<h4>Secretary of State's website and the United States Census Bureau. For the purposes</h4>",
+          "<h4>of clarity, data points such as margin of error and percentages were filtered out.</h4> <br>")
   })
   output$methodDescription <- renderText({
     #methodDes <- "<h4>Description of data manipulation, tooling, display of charts here</h4>"
@@ -63,14 +70,15 @@ server <- function(input, output) {
   })
   
   output$nationalDescription <- renderText({
-    natDes <- "<h4>National data on racial + socioeconomic participation in voting here</h4>"
+    natDes <- "<h4>National break down of data on total population, registered voters, and voters 
+              in 2018 by state by percentage and totals.</h4>"
   })
   
   # TODO: Fix the issue with spacing that occurs here
   output$waDescription <- renderText({
     waDes <- "<br><br><br><br><br><br><br><br><br>
-    <h4>Washington data on racial + socioeconomic participation in voting here,
-    further connections to how different counties + ages relate</h4>"
+    <h4>Washington data on voter registration compared to population broken into age brackets 
+    based on counties.</h4>"
   })
   
   output$conclusionDescription <- renderText({
@@ -81,10 +89,11 @@ server <- function(input, output) {
     paste("<h3><B>Acknowledgements</B></h3>",
           "<h4>Thanks Jeeyoung!</h4>",
           "<h3><B>References</B></h3>",
-          "<h4>[Elections & Voting - WA Secretary of State](https://www.sos.wa.gov/elections/)</h4>",
-          "<h4>[Washington Data and Research - Office of Financial Management](https://ofm.wa.gov/washington-data-research)</h4>",
-          "<h4>[U.S. Census Bureau ](https://www.census.gov/topics/public-sector/voting/data/tables.html)</h4>",
-          "<h4>[MIT Election Lab](https://electionlab.mit.edu/data)</h4>")
+          a("Elections & Voting - WA Secretary of State,", href="https://www.sos.wa.gov/elections/"),
+          a("Washington Data and Research - Office of Financial Management,", href="https://ofm.wa.gov/washington-data-research"),
+          a("U.S. Census Bureau,", href="https://www.census.gov/topics/public-sector/voting/data/tables.html"),
+          a("MIT Election Lab", href="https://electionlab.mit.edu/data")
+          )
   })
 }
 

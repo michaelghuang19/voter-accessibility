@@ -12,14 +12,15 @@ View(natl_voter_reg)
 x <-natl_voter_reg$STATE
 
 #creating vectors to look at total voter registration
-natl_voter_reg["natl_reg"] <- NA
-natl_voter_reg$natl_reg <- natl_voter_reg$Registered / natl_voter_reg$Total.population
-natl_voter_reg$natl_reg
+#natl_voter_reg["natl_reg"] <- NA
+#natl_voter_reg$natl_reg <- natl_voter_reg$Registered / natl_voter_reg$Total.population
+#natl_voter_reg$natl_reg
 #creating vector to look at voter turn out
-natl_voter_reg["voter_turnout"] <- NA
-natl_voter_reg$voter_turnout <- natl_voter_reg$Voted / natl_voter_reg$Registered
-natl_voter_reg$voter_turnout
-natl_voter_reg
+#natl_voter_reg["voter_turnout"] <- NA
+#natl_voter_reg$voter_turnout <- natl_voter_reg$Voted / natl_voter_reg$Registered
+#natl_voter_reg$voter_turnout
+#write.csv(natl_voter_reg, "voter_part_rates.csv", row.names = FALSE)
+
 
 natl_voter_reg<- as.data.frame(t(natl_voter_reg[,-1]))
 colnames(natl_voter_reg) <- x
@@ -39,6 +40,7 @@ WACountyReg$Age.17.24<- factor(row.names(WACountyReg))
 
 WACountyTotal <- read.csv("data/wa_pop_by_age.csv", header = TRUE,
                           stringsAsFactors = FALSE)
+View(WACountyTotal)
 
 m <- WACountyTotal$County
 
