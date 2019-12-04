@@ -26,7 +26,6 @@ natl_percent$X..Registered<-factor(row.names(natl_percent))
 # Washington State data
 WACountyReg <- read.csv("data/wa_reg_voters_by_age.csv", header = TRUE,
                         stringsAsFactors = FALSE)
-View(WACountyReg)
 n <- WACountyReg$County
 
 WACountyReg <- as.data.frame(t(WACountyReg[,-1]))
@@ -36,7 +35,6 @@ WACountyReg$Age.17.24<- factor(row.names(WACountyReg))
 
 WACountyTotal <- read.csv("data/wa_pop_by_age.csv", header = TRUE,
                           stringsAsFactors = FALSE)
-View(WACountyTotal)
 
 m <- WACountyTotal$County
 
