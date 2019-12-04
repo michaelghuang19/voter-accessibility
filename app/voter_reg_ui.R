@@ -27,6 +27,7 @@ ui <- navbarPage("US Voter Registration",
                         mainPanel(
                           tabPanel("National Data",
                                    plotOutput("voterPart"),
+                                   plotOutput("percentPlot"),
                                    
                                    htmlOutput("nationalDescription"))
                         )

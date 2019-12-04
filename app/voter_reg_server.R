@@ -8,19 +8,22 @@ server <- function(input, output) {
   # National barplots
     output$voterPart <- renderPlot({
       
-      ggplot(natl_voter_reg, aes(x=c("Total Population", "Registered Voters", "Total Voters", "% Registered", "% Voted"),
+      ggplot(natl_voter_reg, aes(x=c("Total Population", "Registered Voters", "Total Voters"),
                                  y=natl_voter_reg[,input$STATE])) + geom_bar(stat="identity") +
-                                 #geom_bar(aes(y=natl_voter_reg[,input$STATE]),stat = "identity",position ="identity",alpha=.8,fill='lightblue',color='lightblue4') +
                                  labs(title = input$STATE, y = "People (In Thousands)", x= "National Election Participation")
-                                 #y=natl_voter_reg[,input$STATE])) + geom_bar(stat = "identity") +
-       #labs(title = input$STATE, y = "People (In Thousands)", x= "National Election Participation")
+    })
+    output$percentPlot <-renderPlot({
+      
+      ggplot(natl_percent, aes(x=c("% Registered", "% Voted"),
+                               y=natl_percent[, input$STATE]))+geom_bar(stat = "identity")+
+                               labs(title = input$STATE, y="Percent",x="Participation Measures")
     })
     
   # Washington barplots
   output$voterPlot <- renderPlot({
     
     ggplot(WACountyReg, aes(x=c("17-24", "25-34", "35-44", "45-54",
-                                "55-64", "65+", "Grand Total"),
+                                "55-64", "65+"),
                             y=WACountyReg[,input$County])) + geom_bar(stat="identity") + 
       labs(title = input$County, y = "Registered Voters", x = "Age Groups")
     
@@ -28,7 +31,7 @@ server <- function(input, output) {
   
   output$overlayPlot <- renderPlot({
     ggplot(data=WACountyTotal, aes(x=c("17-24", "25-34", "35-44", "45-54",
-                                       "55-64", "65+", "Grand Total"))) +
+                                       "55-64", "65+"))) +
       geom_bar(aes(y=WACountyTotal[, input$County]),stat="identity",position ="identity",alpha=.8,fill='lightblue',color='lightblue4') +
       geom_bar(aes(y=WACountyReg[, input$County]),stat="identity",position ="identity",alpha=.8,fill='pink',color='red') + labs(title = input$County, y = "Reg. Voters & County Pop.", x = "Age Groups")
   })
@@ -74,7 +77,6 @@ server <- function(input, output) {
               in 2018 by state by percentage and totals.</h4>"
   })
   
-  # TODO: Fix the issue with spacing that occurs here
   output$waDescription <- renderText({
     waDes <- "<br><br><br><br><br><br><br><br><br>
     <h4>Washington data on voter registration compared to population broken into age brackets 
@@ -96,11 +98,3 @@ server <- function(input, output) {
           )
   })
 }
-
-# TODO: Add/replace barplot to be more effective 
-# barplot(WACountyReg[,input$County],
-#         # c("Ages.17.24", "Ages.25.34", "Ages.35.44", "Ages.45.54",
-#                  # "Ages.55.64", "Age.65.and.over", "Grand.Total"),
-#         main = input$County,
-#         ylab = "Registered Voters",
-#         xlab = "Age Groups")

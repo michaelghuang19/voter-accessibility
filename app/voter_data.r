@@ -7,25 +7,21 @@ library(ggplot2)
 # Load datasets in only once.
 # National-level data
 natl_voter_reg <- read.csv("data/national_voter_registration.csv", stringsAsFactors = FALSE)
-View(natl_voter_reg)
 
 x <-natl_voter_reg$STATE
-
-#creating vectors to look at total voter registration
-#natl_voter_reg["natl_reg"] <- NA
-#natl_voter_reg$natl_reg <- natl_voter_reg$Registered / natl_voter_reg$Total.population
-#natl_voter_reg$natl_reg
-#creating vector to look at voter turn out
-#natl_voter_reg["voter_turnout"] <- NA
-#natl_voter_reg$voter_turnout <- natl_voter_reg$Voted / natl_voter_reg$Registered
-#natl_voter_reg$voter_turnout
-#write.csv(natl_voter_reg, "voter_part_rates.csv", row.names = FALSE)
-
 
 natl_voter_reg<- as.data.frame(t(natl_voter_reg[,-1]))
 colnames(natl_voter_reg) <- x
 natl_voter_reg$Total.population <- factor(row.names(natl_voter_reg))
 
+#Percentages of national voter participation
+natl_percent<-read.csv("data/natl_percent.csv", stringsAsFactors = FALSE)
+
+k<-natl_percent$STATE
+
+natl_percent<-as.data.frame(t(natl_percent[,-1]))
+colnames(natl_percent)<-k
+natl_percent$X..Registered<-factor(row.names(natl_percent))
 
 # Washington State data
 WACountyReg <- read.csv("data/wa_reg_voters_by_age.csv", header = TRUE,
