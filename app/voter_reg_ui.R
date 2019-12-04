@@ -16,7 +16,6 @@ ui <- navbarPage("US Voter Registration",
   navbarMenu("Results",
             #National-Level Analysis
             tabPanel("National Data",
-                      #htmlOutput("nationalDescription")
                       sidebarLayout(
                         sidebarPanel(
                           selectInput("STATE",
@@ -44,7 +43,6 @@ ui <- navbarPage("US Voter Registration",
                                       selected = "TOTAL")
                         ),
                         # Results are displayed here
-                        # TODO: Fix the issue with spacing that occurs here
                         mainPanel(
                           tabPanel("Washington Data",
                                    plotOutput("voterPlot"),
