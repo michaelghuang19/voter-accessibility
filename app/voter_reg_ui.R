@@ -25,7 +25,10 @@ ui <- navbarPage("US Voter Registration",
                                       selected = "UNITED STATES")
                         ),
                         mainPanel(
-                          tabPanel("National Data")
+                          tabPanel("National Data",
+                                   plotOutput("voterPart"),
+                                   
+                                   htmlOutput("nationalDescription"))
                         )
                       )
             ),
@@ -45,6 +48,7 @@ ui <- navbarPage("US Voter Registration",
                           tabPanel("Washington Data",
                                    plotOutput("voterPlot"),
                                    plotOutput("overlayPlot"),
+                                   
                                    htmlOutput("waDescription"))
                         )
                      )
